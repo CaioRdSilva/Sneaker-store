@@ -26,7 +26,6 @@ app.use(express.json());
 
 //session midleware
 
-
 app.use(
   session({
     name: "session",
@@ -45,6 +44,21 @@ app.use(
     }
   })
 );
+
+//flash messages
+app.use(flash())
+
+//public path
+app.use(express.static("public"))
+
+//set session to res
+app.use((req,res,next) => {
+    if(req.session.userid){
+        res.locals.session = req.session;
+    }
+    next()
+})
+
 
 conn
   .sync()
