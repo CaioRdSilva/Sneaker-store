@@ -7,9 +7,12 @@ import flash from "express-flash";
 import path from "node:path";
 import os from "node:os";
 
-
 const newLocal = FileStore(session);
 const app = express();
+
+//models
+import { Sneaker } from "./models/Sneaker.js";
+import { User } from "./models/User.js";
 
 //template engine
 app.engine("handlebars", engine);
@@ -37,28 +40,27 @@ app.use(
       path: path.join(os.tmpdir(), "sessions"),
     }),
     cookie: {
-        secure: false,
-        maxAge: 360000,
-        expires: new Date(Date.now() + 360000),
-        httpOnly: true
-    }
+      secure: false,
+      maxAge: 360000,
+      expires: new Date(Date.now() + 360000),
+      httpOnly: true,
+    },
   })
 );
 
 //flash messages
-app.use(flash())
+app.use(flash());
 
 //public path
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 //set session to res
-app.use((req,res,next) => {
-    if(req.session.userid){
-        res.locals.session = req.session;
-    }
-    next()
-})
-
+app.use((req, res, next) => {
+  if (req.session.userid) {
+    res.locals.session = req.session;
+  }
+  next();
+});
 
 conn
   .sync()
