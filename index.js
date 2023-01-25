@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded, json } from "express";
 import { engine } from "express-handlebars";
 import { conn } from "./db/conn.js";
 import session from "express-session";
@@ -14,18 +14,22 @@ const app = express();
 import { Sneaker } from "./models/Sneaker.js";
 import { User } from "./models/User.js";
 
+//import routes
+import router from "./routes/sneakersRoutes.js";
+//import controller
+import { sneakersController } from "./controllers/SneakersController.js";
 //template engine
-app.engine("handlebars", engine);
-app.set("view engine", "handlebars");
+app.engine('handlebars', engine());
+app.set('view engine','handlebars')
 
 //recerber resposta do body
 app.use(
-  express.urlencoded({
+  urlencoded({
     extended: true,
   })
 );
 
-app.use(express.json());
+app.use(json());
 
 //session midleware
 
@@ -62,9 +66,12 @@ app.use((req, res, next) => {
   next();
 });
 
+//routes
+app.use("/sneakers", router);
+app.get("/", sneakersController.showSneakers);
 conn
   .sync()
   .then(() => {
-    app.listen(3000);
+    app.listen(3030);
   })
   .catch((err) => console.log(err));
