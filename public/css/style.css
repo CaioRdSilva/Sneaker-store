@@ -7,6 +7,11 @@
 }
 
 /* navbar */
+nav {
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;*/
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+  }
+
 #navbar {
   padding: 1.2em 1.4em;
   display: flex;
@@ -39,13 +44,9 @@
 }
 
 /* container*/
-body {
-  background-color: #0a0a00;
-  max-height: 100vh;
-}
 .container {
   min-height: 80vh;
-  background-color: #fff;
+  background-color: #dde1e7;
   color: #0a0a00;
   padding: 2em;
 }
@@ -86,8 +87,19 @@ body {
   height: 3.5em;
   border-radius: 10px;
   color: #0a0a00;
-  background-color: #ebe8e0;
-  border: 1px solid #a8bbb0;
+  background-color: #fff;
+  border: 1px solid #EBE8E0;
+  outline: none;
+}
+
+.form-control input:focus,
+.form-control textarea:focus{
+  border: 1px solid #D01110;
+}
+
+.form-control input:valid,
+.form-control textarea:valid{
+  border: 1px solid #20d010;
 }
 
 form input[type='submit'],
@@ -103,6 +115,7 @@ form input[type='submit'],
     cursor: pointer;
     text-decoration: none;
     transition: .5s;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.185)
 }
 
 form input[type='submit']:hover,
@@ -110,6 +123,7 @@ form input[type='submit']:hover,
     background-color: #a8bbb0;
     color: #ebe8e0;
     border: 2px solid #ebe8e0;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25)
 }
 
 /*footer*/
