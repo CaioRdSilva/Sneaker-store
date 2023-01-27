@@ -1,7 +1,7 @@
 import express from "express";
-const router = express.Router();
+const sneakerRouter = express.Router();
 import { sneakersController } from "../controllers/SneakersController.js";
 
-router.get("/", sneakersController.showSneakers);
+sneakerRouter.get("/", sneakersController.showSneakers);
 
-export default router;
+export default sneakerRouter;

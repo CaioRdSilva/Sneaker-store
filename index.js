@@ -15,7 +15,8 @@ import { Sneaker } from "./models/Sneaker.js";
 import { User } from "./models/User.js";
 
 //import routes
-import router from "./routes/sneakersRoutes.js";
+import sneakerRouter from "./routes/sneakersRoutes.js";
+import authRouter from "./routes/authRoutes.js"
 //import controller
 import { sneakersController } from "./controllers/SneakersController.js";
 //template engine
@@ -67,8 +68,12 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("/sneakers", router);
+app.use("/sneakers", sneakerRouter);
+app.use("/", authRouter)
 app.get("/", sneakersController.showSneakers);
+
+
+//conexão BD
 conn
   .sync()
   .then(() => {
