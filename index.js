@@ -64,6 +64,9 @@ app.use((req, res, next) => {
   if (req.session.userid) {
     res.locals.session = req.session;
   }
+  if (req.session.userseller) {
+    res.locals.session = req.session;
+  }
   next();
 });
 

@@ -1,8 +1,13 @@
 const seller = document.querySelector(".switch-button");
 const checkSeller = document.querySelector("#seller");
 
+
 seller.addEventListener("click", () => {
-    checkSeller.target.checked()
+    if(checkSeller.checked){
+        checkSeller.checked = false;
+    }else{
+        checkSeller.checked = true;
+    }
 })
 
 

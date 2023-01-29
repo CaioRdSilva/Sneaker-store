@@ -161,11 +161,11 @@ form .switch-button{
 
 form .switch-button::before{
   content: "";
-  width: 1.7em;
-  height: 1.7em;
+  width: 1.6em;
+  height: 1.6em;
   position: absolute;
-  margin-top: .12em;
-  margin-left: .2em;
+  margin-top: .15em;
+  margin-left: .25em;
   border-radius: 50%;
   transition: .4s all ease;
   background-color: aliceblue;
@@ -173,6 +173,10 @@ form .switch-button::before{
 
 form input[type="checkbox"]:checked + .switch-button{
   background-color: #20d010;
+}
+
+form input[type="checkbox"]:checked + .switch-button::before{
+  transform: translateX(2.4em);
 }
 
 /*footer*/

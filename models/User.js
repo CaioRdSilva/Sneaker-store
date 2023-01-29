@@ -14,4 +14,8 @@ export const User = conn.define("User", {
     type: DataTypes.STRING,
     require: true,
   },
+  seller: {
+    type: DataTypes.BOOLEAN,
+    require: true,
+  }
 });

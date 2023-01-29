@@ -12,7 +12,12 @@ export class authController {
 
   static async registerPost(req, res) {
     const { name, email, password, confirmpassword } = req.body;
-
+    let seller = req.body.seller;
+    if(seller === "on"){
+      seller = true;
+    }else{
+      seller = false;
+    }
     //validation password match
     if (password != confirmpassword) {
       req.flash("message", "As senhas não conferem, tente novamente!");
@@ -37,11 +42,13 @@ export class authController {
     const user = {
       name,
       email,
+      seller,
       password: hashedPassword,
     };
     try {
       const createdUser = await User.create(user);
       //initialize section
+      req.session.userseller = createdUser.seller
       req.session.userid = createdUser.id;
       req.flash("message", "Cadastro realizado com Sucesso!");
       req.session.save(() => {
