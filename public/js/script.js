@@ -1,3 +1,12 @@
+const seller = document.querySelector(".switch-button");
+const checkSeller = document.querySelector("#seller");
+
+seller.addEventListener("click", () => {
+    checkSeller.target.checked()
+})
+
+
+
 let form = document.querySelector(".teste");
 
 form.addEventListener("submit", e => {
