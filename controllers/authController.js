@@ -20,5 +20,35 @@ export class authController {
 
       return;
     }
+    //chek if user exists
+    const checkIfUserExists = await User.findOne({ where: { email: email } });
+
+    if (checkIfUserExists) {
+      req.flash("message", "O E-mail já está cadastrado!");
+      res.render("auth/register");
+
+      return;
+    }
+
+    //create password
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+
+    const user = {
+      name,
+      email,
+      password: hashedPassword,
+    };
+    try {
+      const createdUser = await User.create(user);
+      //initialize section
+      req.session.userid = createdUser.id;
+      req.flash("message", "Cadastro realizado com Sucesso!");
+      req.session.save(() => {
+        res.redirect("/");
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

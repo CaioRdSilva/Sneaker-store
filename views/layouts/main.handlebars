@@ -11,8 +11,13 @@
     <nav id="navbar">
       <ul>
         <li><a href="/">Sneakers</a></li>
+        {{#if session.userid}}
+        <li><a href="/sneakers/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Sair</a></li>
+        {{else}}
         <li><a href="/login">Entrar</a></li>
         <li><a href="/register">Registrar</a></li>
+        {{/if}}
       </ul>
     </nav>
     <div class="container">
