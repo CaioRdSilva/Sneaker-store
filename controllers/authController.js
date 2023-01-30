@@ -13,9 +13,9 @@ export class authController {
   static async registerPost(req, res) {
     const { name, email, password, confirmpassword } = req.body;
     let seller = req.body.seller;
-    if(seller === "on"){
+    if (seller === "on") {
       seller = true;
-    }else{
+    } else {
       seller = false;
     }
     //validation password match
@@ -48,7 +48,7 @@ export class authController {
     try {
       const createdUser = await User.create(user);
       //initialize section
-      req.session.userseller = createdUser.seller
+      req.session.userseller = createdUser.seller;
       req.session.userid = createdUser.id;
       req.flash("message", "Cadastro realizado com Sucesso!");
       req.session.save(() => {
@@ -57,5 +57,10 @@ export class authController {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  static logout(req, res) {
+    req.session.destroy();
+    res.redirect("/login");
   }
 }
