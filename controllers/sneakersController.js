@@ -5,4 +5,7 @@ export class sneakersController{
     static async showSneakers(req, res){
         res.render("sneakers/home")
     }
+    static async dashboard(req, res){
+        res.render("sneakers/dashboard")
+    }
 }
