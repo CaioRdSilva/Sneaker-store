@@ -4,11 +4,19 @@
   <form action="/sneakers/add" method="post">
     <div class="form-control">
       <label for="title">Título:</label>
-      <input
-        type="text"
-        name="title"
-        placeholder="Digite o título do anúncio"
-      />
+      <input type="text" name="title" placeholder="Digite o título do anúncio" required/>
+    </div>
+    <div class="form-control">
+      <label for="description">Descrição:</label>
+      <textarea name="description" id="" cols="30" rows="10" placeholder="Digite a descrição do produto" required></textarea>
+    </div>
+    <div class="form-control">
+      <label for="value">Valor:</label>
+      <input type="number" name="value" placeholder="Digite o valor do produto" required>
+    </div>
+    <div class="form-control">
+      <label for="avatar">Imagem: <span class="chooseImage"></span></label>
+      <input type="file" name="avatar"  accept="image/*" id="avatar" placeholder="Selecione a imagem" required/>
     </div>
     <input type="submit" value="Criar anúncio">
   </form>

@@ -56,7 +56,7 @@ nav {
 }
 
 .title-container h2 {
-  margin-bottom: 2em ;
+  margin-bottom: 2em;
   color: #0a0a00;
   border-left: 4px solid #d01110;
   padding: 0.3em;
@@ -68,8 +68,6 @@ nav {
   flex-direction: column;
   align-items: center;
 }
-
-
 
 /*message*/
 
@@ -218,6 +216,32 @@ form input[type="checkbox"]:checked + .switch-button::before {
   display: flex;
   flex-direction: column;
 }
+
+/* anuncio */
+#avatar {
+  display: none;
+}
+
+.chooseImage {
+  margin: 1em 0;
+  width: 15vw;
+  aspect-ratio: 1/1;
+  background-color: #fff;
+  color: #dde1e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  border-radius: 10px;
+  border: 1px dashed #d01110;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: 0.2s ease;
+}
+.chooseImage:hover {
+  color: #777;
+}
+
 
 /*footer*/
 

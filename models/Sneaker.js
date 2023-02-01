@@ -5,7 +5,7 @@ import { conn } from "../db/conn.js";
 import { User } from "./User.js";
 
 export const Sneaker = conn.define("Sneaker", {
-  Title: {
+  title: {
     type: DataTypes.STRING,
     allowNull: false,
     require: true,
