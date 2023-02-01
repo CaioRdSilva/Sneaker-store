@@ -2,25 +2,25 @@
 const seller = document.querySelector(".switch-button");
 const checkSeller = document.querySelector("#seller");
 
-if(seller){
-seller.addEventListener("click", () => {
-  if (checkSeller.checked) {
-    checkSeller.checked = false;
-  } else {
-    checkSeller.checked = true;
-  }
-});
+if (seller) {
+  seller.addEventListener("click", () => {
+    if (checkSeller.checked) {
+      checkSeller.checked = false;
+    } else {
+      checkSeller.checked = true;
+    }
+  });
 }
 let form = document.querySelector(".form-regist");
 
-if(form){
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  if (checkInputs()) {
-    e.target.submit();
-  }
-});
+    if (checkInputs()) {
+      e.target.submit();
+    }
+  });
 }
 function checkInputs() {
   let status = true;
@@ -43,6 +43,31 @@ function checkInputs() {
 const inputFile = document.querySelector("#avatar");
 const selectImage = document.querySelector(".chooseImage");
 
-if(selectImage){
-selectImage.innerHTML = "Choose an image";
+if (selectImage) {
+  selectImage.innerHTML = "Choose an image";
+}
+
+if (inputFile) {
+  inputFile.addEventListener("change", (e) => {
+    const inputTarget = e.target;
+    const file = inputTarget.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.addEventListener("load", (e) => {
+        const readerTarget = e.target;
+        const img = document.createElement("img");
+        img.src = readerTarget.result;
+        img.classList.add("pictureSelected");
+        selectImage.innerHTML = "";
+        selectImage.style.borderColor = "#20d010"
+        selectImage.appendChild(img)
+      });
+
+      reader.readAsDataURL(file);
+    } else {
+      selectImage.innerHTML = "Choose an image";
+      selectImage.style.borderColor = " #d01110";
+    }
+  });
 }

@@ -242,6 +242,10 @@ form input[type="checkbox"]:checked + .switch-button::before {
   color: #777;
 }
 
+.pictureSelected {
+  width: 100%;
+  border-radius: 10px;
+}
 
 /*footer*/
 
