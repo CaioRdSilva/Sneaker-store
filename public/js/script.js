@@ -11,10 +11,10 @@ if (seller) {
     }
   });
 }
-let form = document.querySelector(".form-regist");
+let formRegist = document.querySelector(".form-regist");
 
-if (form) {
-  form.addEventListener("submit", (e) => {
+if (formRegist) {
+  formRegist.addEventListener("submit", (e) => {
     e.preventDefault();
 
     if (checkInputs()) {
@@ -42,6 +42,7 @@ function checkInputs() {
 
 const inputFile = document.querySelector("#avatar");
 const selectImage = document.querySelector(".chooseImage");
+const formPost = document.querySelector("#addPost");
 
 if (selectImage) {
   selectImage.innerHTML = "Choose an image";
@@ -60,8 +61,8 @@ if (inputFile) {
         img.src = readerTarget.result;
         img.classList.add("pictureSelected");
         selectImage.innerHTML = "";
-        selectImage.style.borderColor = "#20d010"
-        selectImage.appendChild(img)
+        selectImage.style.borderColor = "#20d010";
+        selectImage.appendChild(img);
       });
 
       reader.readAsDataURL(file);
@@ -69,5 +70,15 @@ if (inputFile) {
       selectImage.innerHTML = "Choose an image";
       selectImage.style.borderColor = " #d01110";
     }
+  });
+  formPost.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append(selectImage, e.target[0].file);
+    fetch("http://localhost:3030/sneakers/add", { method: "post", body: formData })
+      .then((res) => res.json())
+      .then((res) => {
+        avatar.src = `http://sneakerstore${res.payload.url}`;
+      });
   });
 }

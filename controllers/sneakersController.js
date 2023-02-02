@@ -16,7 +16,6 @@ export class sneakersController {
       title: req.body.title,
       UserId: req.session.userid,
     };
-
     try {
       await Sneaker.create(sneaker);
 
