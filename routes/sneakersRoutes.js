@@ -7,6 +7,7 @@ import { checkAuth } from "../helpers/auth.js";
 
 sneakerRouter.get( "/dashboard", checkAuth, sneakersController.dashboard);
 sneakerRouter.get( "/add", checkAuth, sneakersController.createSneaker);
+sneakerRouter.post("/add", checkAuth, sneakersController.createSneakerPost);
 sneakerRouter.get("/", sneakersController.showSneakers);
 
 export default sneakerRouter;

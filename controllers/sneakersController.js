@@ -11,4 +11,22 @@ export class sneakersController {
   static createSneaker(req, res) {
     res.render("sneakers/create");
   }
+  static async createSneakerPost(req, res) {
+    const sneaker = {
+      title: req.body.title,
+      UserId: req.session.userid,
+    };
+
+    try {
+      await Sneaker.create(sneaker);
+
+      req.flash("message", "Anúncio criado!");
+
+      req.session.save(() => {
+        res.redirect("/sneakers/dashboard");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
