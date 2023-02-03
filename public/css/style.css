@@ -218,7 +218,7 @@ form input[type="checkbox"]:checked + .switch-button::before {
 }
 
 /* anuncio */
-#avatar {
+#prodImg {
   display: none;
 }
 

@@ -10,6 +10,21 @@ export const Sneaker = conn.define("Sneaker", {
     allowNull: false,
     require: true,
   },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    require: true,
+  },
+  price: {
+    type: DataTypes.DECIMAL,
+    allowNull: false,
+    require: true,
+  },
+  prodImg: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    require: true,
+  },
 });
 
 Sneaker.belongsTo(User);

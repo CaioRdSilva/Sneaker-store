@@ -40,7 +40,7 @@ function checkInputs() {
 
 // adicionar imagem no campo de anuncio
 
-const inputFile = document.querySelector("#avatar");
+const inputFile = document.querySelector("#prodImg");
 const selectImage = document.querySelector(".chooseImage");
 const formPost = document.querySelector("#addPost");
 
@@ -70,15 +70,5 @@ if (inputFile) {
       selectImage.innerHTML = "Choose an image";
       selectImage.style.borderColor = " #d01110";
     }
-  });
-  formPost.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let formData = new FormData();
-    formData.append(selectImage, e.target[0].file);
-    fetch("http://localhost:3030/sneakers/add", { method: "post", body: formData })
-      .then((res) => res.json())
-      .then((res) => {
-        avatar.src = `http://sneakerstore${res.payload.url}`;
-      });
   });
 }

@@ -14,6 +14,9 @@ export class sneakersController {
   static async createSneakerPost(req, res) {
     const sneaker = {
       title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      prodImg: req.file.path,
       UserId: req.session.userid,
     };
     try {
