@@ -4,4 +4,11 @@
         <a href="/sneakers/add" class="btn">Anunciar produto</a>
     </div>
     <h3>Seus produtos:</h3>
+    <ul>
+        {{#each sneakers}}  
+        <li>{{this.title}}</li>
+        <p>{{this.description}}</p>
+        <img src="/upload/users/{{this.prodImg}}" alt="">
+        {{/each}}
+    </ul>
 </div>

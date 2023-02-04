@@ -1,5 +1,4 @@
 import multer from "multer";
-//const parser = multer({ dest: "public/uploads/" });
 
 export const upload = multer({
   storage: multer.diskStorage({

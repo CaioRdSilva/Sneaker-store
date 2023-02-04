@@ -6,7 +6,21 @@ export class sneakersController {
     res.render("sneakers/home");
   }
   static async dashboard(req, res) {
-    res.render("sneakers/dashboard");
+    const userId = req.session.userid;
+    const user = await User.findOne({
+      where: {
+        id: userId,
+      },
+      include: Sneaker,
+      plain: true,
+    });
+    if (!user) {
+      res.redirect("/login");
+      return;
+    }
+    const sneakers = user.Sneakers.map((result) => result.dataValues);
+
+    res.render("sneakers/dashboard", {sneakers});
   }
   static createSneaker(req, res) {
     res.render("sneakers/create");
@@ -16,7 +30,7 @@ export class sneakersController {
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
-      prodImg: req.file.path,
+      prodImg: req.file.filename,
       UserId: req.session.userid,
     };
     try {
