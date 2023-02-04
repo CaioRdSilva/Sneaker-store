@@ -49,7 +49,7 @@ nav {
 /* container*/
 .container {
   min-height: 80vh;
-  background-color: #dde1e7;
+  background: #dde1e7;
   color: #0a0a00;
   padding: 2em;
   position: relative;
@@ -217,7 +217,7 @@ form input[type="checkbox"]:checked + .switch-button::before {
   flex-direction: column;
 }
 
-/* anuncio */
+/* set anuncio */
 #prodImg {
   display: none;
 }
@@ -246,7 +246,42 @@ form input[type="checkbox"]:checked + .switch-button::before {
   width: 100%;
   border-radius: 10px;
 }
+/*exibir anuncio*/
+.prod-list {
+  display: flex;
+  gap: 1em;
+}
 
+.prod-card {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  width: 14em;
+  background: #dde1e7;
+  border-radius: 10px;
+  box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.5),
+    10px 10px 15px rgba(70, 70, 70, 0.12);
+}
+.prod-img {
+  margin-bottom: 1em;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+}
+
+.prod-title {
+  margin-bottom: 1em;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.prod-price {
+  font-weight: bold;
+}
 /*footer*/
 
 footer {
