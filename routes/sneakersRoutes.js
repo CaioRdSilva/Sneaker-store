@@ -8,6 +8,7 @@ import { upload } from "../helpers/record.js";
 sneakerRouter.get("/dashboard", checkAuth, sneakersController.dashboard);
 sneakerRouter.get("/add", checkAuth, sneakersController.createSneaker);
 sneakerRouter.post("/add", checkAuth, upload.single("prodImg"), sneakersController.createSneakerPost);
+sneakerRouter.post("/remove", checkAuth, sneakersController.removeSneaker)
 sneakerRouter.get("/", sneakersController.showSneakers);
 
 export default sneakerRouter;

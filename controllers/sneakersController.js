@@ -20,7 +20,7 @@ export class sneakersController {
     }
     const sneakers = user.Sneakers.map((result) => result.dataValues);
 
-    res.render("sneakers/dashboard", {sneakers});
+    res.render("sneakers/dashboard", { sneakers });
   }
   static createSneaker(req, res) {
     res.render("sneakers/create");
@@ -38,6 +38,20 @@ export class sneakersController {
 
       req.flash("message", "Anúncio criado!");
 
+      req.session.save(() => {
+        res.redirect("/sneakers/dashboard");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  static async removeSneaker(req, res) {
+    const id = req.body.id;
+    const userId = req.session.userid;
+
+    try {
+      await Sneaker.destroy({ where: { id: id, userId: userId } });
+      req.flash("message", "Anúncio removido com sucesso!");
       req.session.save(() => {
         res.redirect("/sneakers/dashboard");
       });

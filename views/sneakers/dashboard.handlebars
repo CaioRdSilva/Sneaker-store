@@ -11,6 +11,13 @@
         <img class="prod-img" src="/upload/users/{{this.prodImg}}" alt="">
         <p class="prod-title">{{this.title}}</p>
         <h4 class="prod-price">R$ {{this.price}}</h4>
+        <span class="actions">
+            <a href="/" class="btn">Editar</a>
+            <form action="/sneakers/remove" method="post">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <input type="submit" value="Excluir" class="btn">
+            </form>
+        </span>
         </div>
         </ol>
         {{/each}}

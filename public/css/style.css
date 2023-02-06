@@ -282,6 +282,12 @@ form input[type="checkbox"]:checked + .switch-button::before {
 .prod-price {
   font-weight: bold;
 }
+
+.actions {
+  display: flex;
+  margin-top: 0.5em;
+  gap: 1em;
+}
 /*footer*/
 
 footer {
