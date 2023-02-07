@@ -20,7 +20,13 @@ export class sneakersController {
     }
     const sneakers = user.Sneakers.map((result) => result.dataValues);
 
-    res.render("sneakers/dashboard", { sneakers });
+    let emptySneakers = false;
+
+    if(sneakers.length === 0){
+      emptySneakers = true
+    }
+
+    res.render("sneakers/dashboard", { sneakers, emptySneakers });
   }
   static createSneaker(req, res) {
     res.render("sneakers/create");
