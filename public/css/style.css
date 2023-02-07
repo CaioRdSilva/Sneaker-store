@@ -288,6 +288,7 @@ form input[type="checkbox"]:checked + .switch-button::before {
   margin-top: 0.5em;
   gap: 1em;
 }
+
 /*footer*/
 
 footer {

@@ -45,8 +45,13 @@ const selectImage = document.querySelector(".chooseImage");
 const formPost = document.querySelector("#addPost");
 
 if (selectImage) {
-  selectImage.innerHTML = "Choose an image";
+  if(selectImage.hasChildNodes()){
+    selectImage.style.borderColor = "#20d010";
+  } else {
+    selectImage.innerHTML = "Choose an image";
+  }
 }
+
 
 if (inputFile) {
   inputFile.addEventListener("change", (e) => {

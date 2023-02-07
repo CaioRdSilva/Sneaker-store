@@ -22,8 +22,8 @@ export class sneakersController {
 
     let emptySneakers = false;
 
-    if(sneakers.length === 0){
-      emptySneakers = true
+    if (sneakers.length === 0) {
+      emptySneakers = true;
     }
 
     res.render("sneakers/dashboard", { sneakers, emptySneakers });
@@ -50,6 +50,13 @@ export class sneakersController {
     } catch (error) {
       console.log(error);
     }
+  }
+  static async editSneaker(req, res) {
+    const id = req.params.id;
+
+    const sneaker = await Sneaker.findOne({ where: { id: id }, raw: true });
+
+    res.render("sneakers/edit", { sneaker });
   }
   static async removeSneaker(req, res) {
     const id = req.body.id;

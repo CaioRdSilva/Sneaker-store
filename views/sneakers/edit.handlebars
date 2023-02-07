@@ -1,0 +1,26 @@
+<div class="sneaker-form-container">
+  <a href="/sneakers/dashboard">Voltar</a>
+  <h1>Editando o Anúncio:</h1>
+  <form action="/sneakers/edit" method="post" enctype="multipart/form-data" id="addPost">
+  <input type="hidden" name="id" value="{{sneaker.id}}">
+    <div class="form-control">
+      <label for="title">Título:</label>
+      <input type="text" name="title" placeholder="Digite o título do anúncio" value="{{sneaker.title}}" required/>
+    </div>
+    <div class="form-control">
+      <label for="description">Descrição:</label>
+      <textarea name="description" id="" cols="30" rows="10" placeholder="Digite a descrição do produto" required>{{sneaker.description}}</textarea>
+    </div>
+    <div class="form-control">
+      <label for="price">Valor:</label>
+      <input type="number" name="price" placeholder="Digite o valor do produto" value="{{sneaker.price}}" required>
+    </div>
+    <div class="form-control">
+      <label for="prodImg">Imagem: <span class="chooseImage">
+        <img src="/upload/users/{{sneaker.prodImg}}" class="pictureSelected">
+      </span></label>
+      <input type="file" name="prodImg"  accept="image/*" id="prodImg" placeholder="Selecione a imagem"  required/>
+    </div>
+    <input type="submit" value="Editar anúncio">
+  </form>
+</div>

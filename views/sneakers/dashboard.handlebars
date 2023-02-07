@@ -1,28 +1,28 @@
 <div class="dashboard">
-    <div class="title-container">
-        <h2>Dashboard</h2>
-        <a href="/sneakers/add" class="btn">Anunciar produto</a>
-    </div>
-    <h3>Seus produtos:</h3>
-    <ul class="prod-list">
-        {{#each sneakers}}
-        <ol>
+  <div class="title-container">
+    <h2>Dashboard</h2>
+    <a href="/sneakers/add" class="btn">Anunciar produto</a>
+  </div>
+  <h3>Seus produtos:</h3>
+  <ul class="prod-list">
+    {{#each sneakers}}
+      <ol>
         <div class="prod-card">
-        <img class="prod-img" src="/upload/users/{{this.prodImg}}" alt="">
-        <p class="prod-title">{{this.title}}</p>
-        <h4 class="prod-price">R$ {{this.price}}</h4>
-        <span class="actions">
-            <a href="/" class="btn">Editar</a>
+          <img class="prod-img" src="/upload/users/{{this.prodImg}}" alt="" />
+          <p class="prod-title">{{this.title}}</p>
+          <h4 class="prod-price">R$ {{this.price}}</h4>
+          <span class="actions">
+            <a href="/sneakers/edit/{{this.id}}" class="btn">Editar</a>
             <form action="/sneakers/remove" method="post">
-            <input type="hidden" name="id" value="{{this.id}}">
-            <input type="submit" value="Excluir" class="btn">
+              <input type="hidden" name="id" value="{{this.id}}" />
+              <input type="submit" value="Excluir" class="btn" />
             </form>
-        </span>
+          </span>
         </div>
-        </ol>
-        {{/each}}
-    </ul>
-    {{#if emptySneakers}}
-        <p>Nenhum anúncio criado</p>
-    {{/if}}
+      </ol>
+    {{/each}}
+  </ul>
+  {{#if emptySneakers}}
+    <p>Nenhum anúncio criado</p>
+  {{/if}}
 </div>
