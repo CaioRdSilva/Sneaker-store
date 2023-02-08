@@ -9,7 +9,8 @@ sneakerRouter.get("/dashboard", checkAuth, sneakersController.dashboard);
 sneakerRouter.get("/add", checkAuth, sneakersController.createSneaker);
 sneakerRouter.post("/add", checkAuth, upload.single("prodImg"), sneakersController.createSneakerPost);
 sneakerRouter.get("/edit/:id", checkAuth, sneakersController.editSneaker);
-sneakerRouter.post("/remove", checkAuth, sneakersController.removeSneaker)
+sneakerRouter.post("/edit", checkAuth , upload.single("prodImg"), sneakersController.editSneakerPost);
+sneakerRouter.post("/remove", checkAuth, sneakersController.removeSneaker);
 sneakerRouter.get("/", sneakersController.showSneakers);
 
 export default sneakerRouter;

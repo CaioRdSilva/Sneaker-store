@@ -58,6 +58,28 @@ export class sneakersController {
 
     res.render("sneakers/edit", { sneaker });
   }
+  static async editSneakerPost(req,res) {
+    const id = req.body.id
+    const sneaker = {
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      prodImg: req.file.filename
+    }
+
+    try {
+      await Sneaker.update(sneaker, {where: {id: id }})
+      req.flash("message", "Anúncio atualizado com sucesso!");
+
+      req.session.save(() => {
+        res.redirect("/sneakers/dashboard");
+      });
+    } catch (error) {
+      console.log(error)
+    }
+
+
+  }
   static async removeSneaker(req, res) {
     const id = req.body.id;
     const userId = req.session.userid;
