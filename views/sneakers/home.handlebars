@@ -1,1 +1,19 @@
-<h1>Hello world</h1>
+<div class="home-header">
+    <h1>Todos os produtos</h1>
+</div>
+<div class="sneakers-container">
+     <ul class="prod-list">
+    {{#each sneakers}}
+      <ol>
+        <div class="prod-card">
+          <img class="prod-img" src="/upload/users/{{this.prodImg}}" alt="" />
+          <p class="prod-title">{{this.title}}</p>
+          <h4 class="prod-price">R$ {{this.price}}</h4>
+          <span class="actions">
+              <input type="submit" value="Comprar" class="btn" />
+          </span>
+        </div>
+      </ol>
+    {{/each}}
+  </ul>
+</div>

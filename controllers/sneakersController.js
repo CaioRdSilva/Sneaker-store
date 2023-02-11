@@ -3,8 +3,13 @@ import { User } from "../models/User.js";
 
 export class sneakersController {
   static async showSneakers(req, res) {
-    res.render("sneakers/home");
+    const Data = await Sneaker.findAll();
+    const sneakers = Data.map((result) => result.dataValues);
+
+    console.log(sneakers);
+    res.render("sneakers/home", { sneakers });
   }
+
   static async dashboard(req, res) {
     const userId = req.session.userid;
     const user = await User.findOne({
@@ -58,27 +63,25 @@ export class sneakersController {
 
     res.render("sneakers/edit", { sneaker });
   }
-  static async editSneakerPost(req,res) {
-    const id = req.body.id
+  static async editSneakerPost(req, res) {
+    const id = req.body.id;
     const sneaker = {
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
-      prodImg: req.file.filename
-    }
+      prodImg: req.file.filename,
+    };
 
     try {
-      await Sneaker.update(sneaker, {where: {id: id }})
+      await Sneaker.update(sneaker, { where: { id: id } });
       req.flash("message", "Anúncio atualizado com sucesso!");
 
       req.session.save(() => {
         res.redirect("/sneakers/dashboard");
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
-
   }
   static async removeSneaker(req, res) {
     const id = req.body.id;
