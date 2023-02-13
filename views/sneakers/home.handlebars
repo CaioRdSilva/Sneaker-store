@@ -1,8 +1,26 @@
 <div class="home-header">
-    <h1>Todos os produtos</h1>
+  <h1>Todos os produtos</h1>
+</div>
+<form action="/" method="get">
+  <input type="text" name="search" placeholder="O quê está buscando?" />
+  <input type="submit" value="Buscar" class="btn" />
+</form>
+<div class="order-container">
+  <span>Ordernar por:</span>
+  <form action="/" method="get">
+    <input type="hidden" name="search" {{this.search}} />
+    <input type="hidden" name="order" value="new" />
+    <button type="submit"><i class="bi bi-arrow-up"></i></button>
+  </form>
+  <form action="/" method="get">
+    <input type="hidden" name="search" {{this.search}} />
+    <input type="hidden" name="order" value="old" />
+    <button type="submit"><i class="bi bi-arrow-down"></i></button>
+  </form>
+  <a href="/">Limpar</a>
 </div>
 <div class="sneakers-container">
-     <ul class="prod-list">
+  <ul class="prod-list">
     {{#each sneakers}}
       <ol>
         <div class="prod-card">
@@ -10,7 +28,7 @@
           <p class="prod-title">{{this.title}}</p>
           <h4 class="prod-price">R$ {{this.price}}</h4>
           <span class="actions">
-              <input type="submit" value="Comprar" class="btn" />
+            <input type="submit" value="Comprar" class="btn" />
           </span>
         </div>
       </ol>
