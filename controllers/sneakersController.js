@@ -6,7 +6,6 @@ export class sneakersController {
     const Data = await Sneaker.findAll();
     const sneakers = Data.map((result) => result.dataValues);
 
-    console.log(sneakers);
     res.render("sneakers/home", { sneakers });
   }
 
