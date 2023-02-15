@@ -1,23 +1,32 @@
 <div class="home-header">
-  <h1>Todos os produtos</h1>
+  {{#if search}}
+    <h1>Você está buscando por: <span>{{this.search}}</span></h1>
+    {{#if sneakersQty}}
+    <p>Foram encontrados <span>{{this.sneakersQty}}</span> anúncios</p>
+    {{else}}
+    <p>Nenhum anúncio foi encontrado para o termo: <span>{{this.search}}</span></p>
+    {{/if}}
+  {{else}}
+    <h1>Todos os produtos</h1>
+  {{/if}}
   <form action="/" method="get">
-  <input type="text" name="search" placeholder="O quê está buscando?" />
-  <input type="submit" value="Buscar" class="btn" />
-</form>
-<div class="order-container">
-  <span>Ordernar por:</span>
-  <form action="/" method="get">
-    <input type="hidden" name="search" {{this.search}} />
-    <input type="hidden" name="order" value="new" />
-    <button type="submit"><i class="bi bi-arrow-up"></i></button>
+    <input type="text" name="search" placeholder="O quê está buscando?" />
+    <input type="submit" value="Buscar" class="btn" />
   </form>
-  <form action="/" method="get">
-    <input type="hidden" name="search" {{this.search}} />
-    <input type="hidden" name="order" value="old" />
-    <button type="submit"><i class="bi bi-arrow-down"></i></button>
-  </form>
-  <a href="/">Limpar</a>
-</div>
+  <div class="order-container">
+    <span>Ordernar por:</span>
+    <form action="/" method="get">
+      <input type="hidden" name="search" {{this.search}} />
+      <input type="hidden" name="order" value="new" />
+      <button type="submit"><i class="bi bi-arrow-up"></i></button>
+    </form>
+    <form action="/" method="get">
+      <input type="hidden" name="search" {{this.search}} />
+      <input type="hidden" name="order" value="old" />
+      <button type="submit"><i class="bi bi-arrow-down"></i></button>
+    </form>
+    <a href="/">Limpar</a>
+  </div>
 </div>
 <div class="sneakers-container">
   <ul class="prod-list">

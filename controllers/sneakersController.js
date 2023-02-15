@@ -1,12 +1,29 @@
 import { Sneaker } from "../models/Sneaker.js";
 import { User } from "../models/User.js";
+import { Op } from "sequelize";
 
 export class sneakersController {
   static async showSneakers(req, res) {
-    const Data = await Sneaker.findAll();
+    let search = "";
+
+    if (req.query.search) {
+      search = req.query.search;
+    }
+
+    const Data = await Sneaker.findAll({
+      where: {
+        title: { [Op.like]: `%${search}%` },
+      },
+    });
     const sneakers = Data.map((result) => result.dataValues);
 
-    res.render("sneakers/home", { sneakers });
+    let sneakersQty = sneakers.length;
+
+    if(sneakersQty === 0) {
+      sneakersQty = false;
+    }
+
+    res.render("sneakers/home", { sneakers, search, sneakersQty });
   }
 
   static async dashboard(req, res) {
