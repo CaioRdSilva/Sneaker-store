@@ -10,10 +10,17 @@ export class sneakersController {
       search = req.query.search;
     }
 
+    let order = "DESC";
+
+    if(req.query.order === "old"){
+      order = "ASC";
+    }
+
     const Data = await Sneaker.findAll({
       where: {
         title: { [Op.like]: `%${search}%` },
       },
+      order: [["createdAt", order]]
     });
     const sneakers = Data.map((result) => result.dataValues);
 
