@@ -26,6 +26,15 @@ nav {
   /*border-bottom: 1px solid #0a0a00;*/
 }
 
+#navbar .main {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.103),
+  0 6px 20px 0 rgba(0, 0, 0, 0.123);
+}
+
 #navbar ul {
   display: flex;
   list-style: none;
@@ -136,9 +145,9 @@ nav {
 
 form input[type="submit"],
 .btn {
-  background-color: transparent;
-  color: #a8bbb0;
-  border: 2px solid #a8bbb0;
+  background-color: white;
+  color: #d01110;
+  border: 1px solid #d01110;
   padding: 0.5em 1.2em;
   margin-bottom: 1em;
   font-size: 1em;
@@ -152,10 +161,11 @@ form input[type="submit"],
 
 form input[type="submit"]:hover,
 .btn:hover {
-  background-color: #a8bbb0;
-  color: #ebe8e0;
-  border: 2px solid #ebe8e0;
+  background-color: white;
+  color: #42b138;
+  border: 1px solid #20d010;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
 }
 
 form input[type="checkbox"] {

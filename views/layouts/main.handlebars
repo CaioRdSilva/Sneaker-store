@@ -10,12 +10,15 @@
                um CRUD feito com Node.js e arquiterura MVC"
     />
     <title>Sneaker Store</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.svg">
     <link rel="stylesheet" href="/css/style.css" />
     <!--Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   </head>
   <body>
     <nav id="navbar">
+      <a class="main" href="/">SneakerStore</a>
+
       <ul>
         <li><a href="/">Sneakers</a></li>
         {{#if session.userseller}}
